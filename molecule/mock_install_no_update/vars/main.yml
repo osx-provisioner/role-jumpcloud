@@ -1,0 +1,5 @@
+---
+jumpcloud_agent_url: "https://gist.githubusercontent.com/niall-byrne/94e995c8951bca59a826715053fb2bf8/raw/db7a6d427b5205d1276ae0cc7d60ee8ef82cd5c3/installer.sh"
+jumpcloud_connect_key: "secret_jumpcloud_key"
+jumpcloud_upgrade: false
+jumpcloud_agent_location: /tmp/mock_installer_arguments

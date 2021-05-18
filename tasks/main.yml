@@ -1,0 +1,21 @@
+---
+# tasks file for role-jumpcloud
+
+- name: Check if the agent software is present
+  stat:
+    path: "{{ jumpcloud_agent_location }}"
+  register: software_location
+
+- name: Download the JumpCloud Agent Installer
+  get_url:
+    url: "{{ jumpcloud_agent_url }}"
+    dest: "{{ jumpcloud_installer_destination }}"
+    mode: 0700
+  when: (software_location.stat.exists and jumpcloud_upgrade) or not software_location.stat.exists
+
+- name: Run the Agent Installation Script
+  become: true
+  command: "{{ jumpcloud_installer_destination }} -s -k {{ jumpcloud_connect_key }}"
+  args:
+    chdir: /tmp/
+  when: (software_location.stat.exists and jumpcloud_upgrade) or not software_location.stat.exists

@@ -1,0 +1,19 @@
+---
+sudo: required
+language: bash
+jobs:
+  include:
+    - os: osx
+      osx_image: xcode12.5
+      env:
+        - SCENARIO=hostmachine1
+before_install: []
+install:
+  - sudo python3 -m pip install poetry
+  - poetry install
+script:
+  - poetry run molecule lint
+  - poetry run molecule test -s "${SCENARIO}"
+notifications:
+  slack:
+    onOocckzUfSjYwx/o1tD1wvWvOGsLYRp8LXEUDU79ycPjm/MQy2rSYiOFxkd54bn75MQZEagUm48ehVOgRzmBKEfBqcSbY7oVYinjaE3FrTedplnwbP7/925d1fWr+zqd2XshU7IQZHRNepFKw7Uux8L+tSYrGUFpgak4zS/KBDpfEzyQbqyiYeu/BycF21Mc+hgoNPzwi3oIOWhN+W6xQmIWdkqwHDi8Ut/37nLMCOtoljIVGLjHjy64Wk5Kf88xZQNMJU34BSBK5lYgsZQ8eDJlAn/yGGkxW+qUCZ1EgP9c6+jAsjLOpCUgwR7IvkYCtYQV9svK+TwIHnoLJ1XRmuhiL8aYKfEFeIkysttkBcn4jLCUR1QL13f8wsCBszoqK4QLbhMikkOWMveFziKRZHfQv10jDOlVGWIuWqQ9M0yVwPLoTgKL1Kp+QZq0/1mJLdC0hiEXpv3ewF6AzPrP5+FJQxO/ZxR57v78xJ52T9blF/6iiSMISH7vaM0XGjw5uNW7vx6nLs/PQlelCmooCRZ1klM0bB4rkQyPEtDaMSOXPzUdkLp6Xpc13GgyjsWudzdaenO0HNADMDgDQY5dZHGSJ43F1yNVDOgqMvkKNLxbxpWgZZZpNkGGHfZEfzrX378e/4d4lGwGyPE2VhjblZZaePlLKn+BmX9z4llL1E=
