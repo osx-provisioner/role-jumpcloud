@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Load Scenario Variables
+      include_vars: vars/main.yml
+    - name: Read Variables from Test Run
+      slurp:
+        src: "{{ jumpcloud_agent_location }}"
+      register: results
+    - name: Check Mock Install Arguments (confirm it's been installed twice!)
+      assert:
+        that:
+          - results.content | b64decode == "Mock Previous Install\n-s -k secret_jumpcloud_key\n"

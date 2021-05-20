@@ -3,7 +3,7 @@ galaxy_info:
   role_name: jumpcloud
   namespace: osx_provisioner
   author: Niall Byrne
-  description: Installs the JumpCloud agent on OSX machines.
+  description: Ansible role that installs the JumpCloud agent on OSX machines.
   company: Shared Vision Solutions
   license: MPL-2
   platforms:

@@ -3,9 +3,12 @@
   hosts: all
   gather_facts: false
   tasks:
+    - name: Load Default Variables
+      include_vars: ../../defaults/main.yml
     - name: Load Scenario Variables
       include_vars: vars/main.yml
     - name: Read Variables from Test Run
+      become: true
       slurp:
         src: /tmp/mock_installer_arguments
       register: results

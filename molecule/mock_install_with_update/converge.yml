@@ -5,10 +5,14 @@
   tasks:
     - name: Load Default Variables
       include_vars: ../../defaults/main.yml
-    - name: Load Default Variables
-      include_vars: ../../defaults/main.yml
     - name: Load Scenario Variables
       include_vars: vars/main.yml
+    - name: Mock Previous Install Data
+      become: true
+      copy:
+        dest: "{{ jumpcloud_agent_location }}"
+        content: "Mock Previous Install\n"
+        mode: 0644
     - name: "Include osx_provisioner.jumpcloud"
       ansible.builtin.include_role:
         name: "osx_provisioner.jumpcloud"
