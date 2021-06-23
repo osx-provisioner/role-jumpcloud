@@ -60,6 +60,8 @@ License
 
 MIT
 
+(JumpCloud licensing can be found [here](https://jumpcloud.com/legal))
+
 Author Information
 ------------------
 
