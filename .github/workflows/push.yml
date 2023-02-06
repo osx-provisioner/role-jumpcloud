@@ -146,7 +146,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        os: [10.15]
+        os: [10.15, 11]
         platform: [x86_64]
         python-version: [3.8.10]
         scenario: ["mock_install_no_update", "mock_install_with_update"]
