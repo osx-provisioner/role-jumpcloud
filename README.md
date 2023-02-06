@@ -11,6 +11,20 @@ Ansible role that installs the JumpCloud agent on OSX machines.
 ### Notes:
 - See the [JumpCloud Website](https://jumpcloud.com/) for further details about this platform.
 
+### Monterey and Later:
+
+On OSX versions >= 12, there's are 2 manual installation steps required.
+- **Prior** to installing this role, the **Terminal** application should be given `Full Disk Access`.  
+- **While** installing this role, the `System Preferences` window will open, waiting five minutes for you to grant the JumpCloud Agent full disk access, before declaring the installation a failure.  
+
+This requires making the appropriate selection inside `System Preferences --> Security`:
+
+![SystemPreferences](.documentation/SystemPreferences.png)
+
+Once these steps are completed once, subsequent runs will complete without the interruption.
+
+See the [JumpCloud Website](https://jumpcloud.com/) for further details about the agent's requirements.
+
 Requirements
 ------------
 

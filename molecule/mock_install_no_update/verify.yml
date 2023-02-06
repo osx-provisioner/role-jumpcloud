@@ -15,4 +15,4 @@
     - name: Check Mock Install Arguments
       assert:
         that:
-          - results.content | b64decode == "-s -k secret_jumpcloud_key\n"
+          - results.content | b64decode == "-f -s -k secret_jumpcloud_key\n"

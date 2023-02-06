@@ -19,7 +19,7 @@
 
 - name: Run the Agent Installation Script
   become: true
-  command: "{{ jumpcloud_installer_destination }} -s -k {{ jumpcloud_connect_key }}"
+  command: "{{ jumpcloud_installer_destination }} -f -s -k {{ jumpcloud_connect_key }}"
   register: installed
   args:
     chdir: /tmp/
