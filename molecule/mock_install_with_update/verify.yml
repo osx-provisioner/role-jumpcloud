@@ -4,12 +4,12 @@
   gather_facts: false
   tasks:
     - name: Load Scenario Variables
-      include_vars: vars/main.yml
+      ansible.builtin.include_vars: vars/main.yml
     - name: Read Variables from Test Run
-      slurp:
+      ansible.builtin.slurp:
         src: "{{ jumpcloud_agent_location }}"
       register: results
     - name: Check Mock Install Arguments (confirm it's been installed twice!)
-      assert:
+      ansible.builtin.assert:
         that:
           - results.content | b64decode == "Mock Previous Install\n-f -s -k secret_jumpcloud_key\n"

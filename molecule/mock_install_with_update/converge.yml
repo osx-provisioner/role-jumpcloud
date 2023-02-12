@@ -4,12 +4,12 @@
   connection: local
   tasks:
     - name: Load Default Variables
-      include_vars: ../../defaults/main.yml
+      ansible.builtin.include_vars: ../../defaults/main.yml
     - name: Load Scenario Variables
-      include_vars: vars/main.yml
+      ansible.builtin.include_vars: vars/main.yml
     - name: Mock Previous Install Data
       become: true
-      copy:
+      ansible.builtin.copy:
         dest: "{{ jumpcloud_agent_location }}"
         content: "Mock Previous Install\n"
         mode: 0644

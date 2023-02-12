@@ -4,11 +4,11 @@
   connection: local
   tasks:
     - name: Load Default Variables
-      include_vars: ../../defaults/main.yml
+      ansible.builtin.include_vars: ../../defaults/main.yml
     - name: Load Default Variables
-      include_vars: ../../defaults/main.yml
+      ansible.builtin.include_vars: ../../defaults/main.yml
     - name: Load Scenario Variables
-      include_vars: vars/main.yml
+      ansible.builtin.include_vars: vars/main.yml
     - name: "Include osx_provisioner.jumpcloud"
       ansible.builtin.include_role:
         name: "osx_provisioner.jumpcloud"

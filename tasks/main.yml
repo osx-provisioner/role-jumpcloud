@@ -2,14 +2,14 @@
 # tasks file for role-jumpcloud
 
 - name: Check if the agent software is present
-  stat:
+  ansible.builtin.stat:
     path: "{{ jumpcloud_agent_location }}"
   register: software_location
   tags:
     - jumpcloud
 
 - name: Download the JumpCloud Agent Installer
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ jumpcloud_agent_url }}"
     dest: "{{ jumpcloud_installer_destination }}"
     mode: 0700
@@ -19,10 +19,11 @@
 
 - name: Run the Agent Installation Script
   become: true
-  command: "{{ jumpcloud_installer_destination }} -f -s -k {{ jumpcloud_connect_key }}"
+  ansible.builtin.command: "{{ jumpcloud_installer_destination }} -f -s -k {{ jumpcloud_connect_key }}"
   register: installed
   args:
     chdir: /tmp/
+  changed_when: (software_location.stat.exists and jumpcloud_upgrade) or not software_location.stat.exists
   when: (software_location.stat.exists and jumpcloud_upgrade) or not software_location.stat.exists
   tags:
     - jumpcloud
