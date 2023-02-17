@@ -1,6 +1,11 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+    timeout: "120"
+    force: false
 driver:
   name: delegated
   options:
@@ -15,8 +20,6 @@ provisioner:
   config_options:
     privilege_escalation:
       become_method: sudo
-verifier:
-  name: ansible
 scenario:
   create_sequence:
     - dependency
@@ -54,3 +57,5 @@ scenario:
     - verify
     - cleanup
     - destroy
+verifier:
+  name: ansible
