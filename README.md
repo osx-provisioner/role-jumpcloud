@@ -58,7 +58,7 @@ Example Playbook
 ----------------
 
 ```yaml
-- hosts: web
+- hosts: all
   roles:
   - role: osx_provisioner.jumpcloud
     jumpcloud_agent_url: "https://raw.githubusercontent.com/TheJumpCloud/support/master/scripts/macos/install_agent_and_serviceaccount.sh"
